@@ -1,0 +1,41 @@
+LANG=en_US
+export LANG
+
+. /usr/local/bin/portableCmds_sh
+
+/usr/g/bin/serviceClassA ON
+
+progname="probes_cal"
+protomode=2   # Service Mode
+protocol="probescal"
+echofile="echodata.dat"
+prescan_file="/usr/g/bin/psc_params"
+log_file="/usr/g/caldir/probes_cal.log"
+shim_file="/tmp/curshim"
+data_file="/usr/g/caldir/probesfix.dat"
+quiet=1
+
+z2string=`readNavShimCurrent z2`
+currz2=`echo "$z2string" | cut -d 't' -f2 | cut -d 'm' -f1`
+zxstring=`readNavShimCurrent zx`
+currzx=`echo "$zxstring" | cut -d 't' -f2 | cut -d 'm' -f1`
+zystring=`readNavShimCurrent zy`
+currzy=`echo "$zystring" | cut -d 't' -f2 | cut -d 'm' -f1`
+x2y2string=`readNavShimCurrent x2y2`
+currx2y2=`echo "$x2y2string" | cut -d 't' -f2 | cut -d 'm' -f1`
+xystring=`readNavShimCurrent xy`
+currxy=`echo "$xystring" | cut -d 't' -f2 | cut -d 'm' -f1`
+
+echo $currx2y2 > /usr/g/research/columbia/cj/tempShimFileAll.txt
+echo $currzx >> /usr/g/research/columbia/cj/tempShimFileAll.txt
+echo $currz2 >> /usr/g/research/columbia/cj/tempShimFileAll.txt
+echo $currzy >> /usr/g/research/columbia/cj/tempShimFileAll.txt
+echo $currxy >> /usr/g/research/columbia/cj/tempShimFileAll.txt
+
+
+
+
+
+
+
+
